@@ -4,7 +4,7 @@ title: Projects
 permalink: /projects/
 ---
 
-## ==Auxy==: The subscription-based product that helps at-risk students reach their potential by connecting them with on-campus resources
+## Auxy: The subscription-based product that helps at-risk students reach their potential by connecting them with on-campus resources
 
 This was an Inter-professional Project (IPRO) that took place at Illinois Institute of Technology that involved creating a solution to help students that are at risk of failing their classes.
 
@@ -49,3 +49,12 @@ This is a research paper that discusses cyber security issues in developed natio
 ### Whitepaper
 
 [You can read the whitepaper produced for this research by clicking here.](/static/files/ResearchDocument.pdf)
+
+### Data Security
+
+This is a research that i wrote about different types of data threats
+
+### Whitepaper
+
+[You can read the whitepaper produced for this research by clicking here.]
+(https://www.linkedin.com/pulse/data-security-idris-fagbemi)
