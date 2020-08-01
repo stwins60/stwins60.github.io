@@ -1,0 +1,32 @@
+#- title: index
+#  url: index
+
+- title: about site
+  url: about-site
+
+- title: contact
+  url: contact
+
+- title: blog
+  url: blog
+
+- title: interests
+  url: interests
+
+- title: projects
+  url: projects
+
+- title: resume
+  url: resume
+
+- title: skills
+  url: skills
+
+#- title: tutoring
+#  url: tutoring-reviews
+
+- title: certifications
+  url: certifications
+
+- title: why me?
+  url: why-me
