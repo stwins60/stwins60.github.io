@@ -13,7 +13,7 @@ permalink: /contact/
 <https://www.linkedin.com/in/idris-fagbemi-417a559b/>
 
 ## Email
-    resplendent [dot] falconeer [at] g/m/a/i/l [dot] c.o.m
+    idris [dot] niyi ninty four [at] g/m/a/i/l [dot] c.o.m
 
 If you want a fast response, I suggest using Gmail.
 
