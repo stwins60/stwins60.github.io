@@ -56,5 +56,4 @@ This is a research that i wrote about different types of data threats
 
 ### Whitepaper
 
-[You can read the whitepaper produced for this research by clicking here.]
-(https://www.linkedin.com/pulse/data-security-idris-fagbemi)
+[You can read the whitepaper produced for this research by clicking here.](https://www.linkedin.com/pulse/data-security-idris-fagbemi/)
