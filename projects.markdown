@@ -46,7 +46,7 @@ I created a personal webpage to track the number of cases in the United States. 
 
 A personal project to practice my SQL beginner skills.
 
-<img src = "static/images/sql_query_analyzer.jpg" width ="1175">
+![](/static/images/sql_query_analyzer.jpg)
 
 [You can visit the github repository here.](https://github.com/stwins60/SQL-Query-Analyzer)
 

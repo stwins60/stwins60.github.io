@@ -125,7 +125,7 @@ ITMS 443 - Vulnerability Analys and Ctrl
 
 ### Basic Cerificate Computer Information Systems
 
-<img src= "/static/images/udemy-certificates/BasicCert.jpg" width= 1175>
+![](/static/images/udemy-certificates/BasicCert.jpg)
 
 ### Java Basics
 
