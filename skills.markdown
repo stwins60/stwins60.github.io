@@ -66,6 +66,9 @@ I have use SQL a lot while doing my school or personal projecs. Also, I am famil
 ### HTML and CSS
 I have vast knowledge in HTML & CSS. I have use them alot to create my personal projects, some which am currently on.
 
+### Python
+I have used python to create a load testing application using locust library. Also, i have done some personal projects using python.
+
 
 ## Strengths & Weaknesses
 ### Strengths

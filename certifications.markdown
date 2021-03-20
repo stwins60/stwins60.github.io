@@ -115,6 +115,11 @@ ITMS 443 - Vulnerability Analys and Ctrl
 
 ![](/static/images/udemy-certificates/UC-83eab193-a368-4c1b-9a8b-5dce0a11d2f5.jpg)
 
+### Locust Performance Framework Development With Real Project
+<https://www.udemy.com/course/locust-performance-framework-development-with-real-project/>
+
+![](/static/images/udemy-certificates/UC-e44458f2-0c17-4b61-a55e-1a199d2fb152.jpg)
+
 
 ## Certifications
 

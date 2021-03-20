@@ -42,6 +42,14 @@ I created a personal webpage to track the number of cases in the United States. 
 [You can visit the page by clicking here.](http://idris-fagbemi.me/Covid19/)
 
 
+## SQL Query Analyzer Tool
+
+I created a personal project to practice my SQL beginner skills.
+
+<img src = "static/images/sql_query_analyzer.jpg" width ="1175">
+
+[You can visit the github repository here.](https://github.com/stwins60/SQL-Query-Analyzer)
+
 ## A review of the IT security literature: Insights for practice for developing nations
 
 This is a research paper that discusses cyber security issues in developed nations. It focuses on the latest information concerning IT security techniques, trends, and ethics that are increasingly changing the face of cyber security.
