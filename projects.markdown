@@ -44,7 +44,7 @@ I created a personal webpage to track the number of cases in the United States. 
 
 ## SQL Query Analyzer Tool
 
-I created a personal project to practice my SQL beginner skills.
+A personal project to practice my SQL beginner skills.
 
 <img src = "static/images/sql_query_analyzer.jpg" width ="1175">
 
