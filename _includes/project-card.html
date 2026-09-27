@@ -1,0 +1,20 @@
+{%- assign p = include.project -%}
+{%- assign external = true -%}
+{%- if p.link contains '://' -%}{%- else -%}{%- assign external = false -%}{%- endif -%}
+<article class="card project">
+  {%- if p.image and include.images %}
+  <img class="project-shot" src="{{ p.image | relative_url }}" alt="Screenshot of {{ p.title }}" loading="lazy" decoding="async">
+  {%- endif %}
+  <div class="card-body">
+    <h3>{{ p.title }}</h3>
+    <p>{{ p.summary }}</p>
+    <ul class="tags" aria-label="Technologies">
+      {%- for t in p.stack %}<li>{{ t }}</li>{% endfor -%}
+    </ul>
+    {%- if p.link %}
+    <a class="card-link" href="{% if external %}{{ p.link }}{% else %}{{ p.link | relative_url }}{% endif %}"{% if external %} target="_blank" rel="noopener noreferrer"{% endif %}>
+      {{ p.link_label | default: 'Learn more' }} {% include icon.html name="external" %}
+    </a>
+    {%- endif %}
+  </div>
+</article>

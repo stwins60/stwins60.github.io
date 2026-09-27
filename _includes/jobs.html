@@ -1,0 +1,43 @@
+{%- comment -%}
+  Roles synced from africantech.dev, with curated overrides from _data/experience.yml.
+  include.style: "timeline" (home) or "resume".
+{%- endcomment -%}
+{%- assign synced = site.data.africantech.experience -%}
+{%- assign extras = site.data.experience | where: "extra", true -%}
+{%- assign all = synced | concat: extras -%}
+{%- for job in all -%}
+  {%- assign o = nil -%}
+  {%- if job.extra -%}
+    {%- assign o = job -%}
+  {%- else -%}
+    {%- for c in site.data.experience -%}
+      {%- if c.match and job.org contains c.match -%}{%- assign o = c -%}{%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+  {%- assign role = o.role | default: job.title -%}
+  {%- assign company = o.company | default: job.org -%}
+  {%- assign period = o.period | default: job.period -%}
+  {%- if include.style == "resume" %}
+<div class="resume-item">
+  <div class="resume-row">
+    <h3>{{ role | escape }} <span class="at">· {{ company | escape }}</span></h3>
+    <span class="resume-period">{{ period | escape }}</span>
+  </div>
+  {%- else %}
+<li class="timeline-item">
+  <div class="timeline-meta">{{ period | escape }}</div>
+  <div class="timeline-body">
+    <h3>{{ role | escape }} <span class="at">@ {{ company | escape }}</span></h3>
+  {%- endif %}
+  {%- if o.highlights %}
+    <ul>{% for h in o.highlights %}<li>{{ h | escape }}</li>{% endfor %}</ul>
+  {%- elsif job.description != "" %}
+    <p>{{ job.description | escape }}</p>
+  {%- endif %}
+  {%- if include.style == "resume" %}
+</div>
+  {%- else %}
+  </div>
+</li>
+  {%- endif -%}
+{%- endfor -%}

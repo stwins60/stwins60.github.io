@@ -1,43 +1,67 @@
 # stwins60.github.io
-Idris Fagbemi's professional website
 
-<https://stwins60.github.io>
+Personal site of Idris Fagbemi: <https://stwins60.github.io>
 
-## Preamble
+A dependency-light Jekyll site: custom layouts, one plain CSS file, two small
+scripts, and no third-party runtime assets. GitHub Pages builds and deploys it
+from `master`.
 
-I recommend Hugo. Jekyll is dusty AF and a PITA bread to get installed on Windows, and uses old Ruby versions.
+## Where content lives
 
-Use Hugo instead.
+| What | File | Maintained by |
+| --- | --- | --- |
+| About text, services, roles, degrees, articles | `_data/africantech.json` | **Synced** from [africantech.dev](https://africantech.dev) |
+| Curated bullets / titles for synced roles | `_data/experience.yml` | You (matched on company via `match:`) |
+| Curated degree names | `_data/education.yml` | You (matched on school via `match:`) |
+| Skills | `_data/skills.yml` | You |
+| Projects (`featured: true` shows on home) | `_data/projects.yml` | You |
+| Name, email, social links | `_config.yml` | You |
 
-## Requirements
+Don't hand-edit `_data/africantech.json`; the next sync overwrites it. Put
+overrides in the YAML files instead. A role that appears on africantech.dev
+with no matching override is shown automatically using its paragraph
+description.
 
--   Ruby 2.6.5.1 (works for me on Windows)
-    -   Bundler (`gem install bundler`)
+## Syncing from africantech.dev
 
-### Notes
+`.github/workflows/sync-africantech.yml` runs daily (and on demand from the
+Actions tab). It runs `scripts/sync-africantech.mjs`, commits
+`_data/africantech.json` if anything changed, and asks Pages to rebuild.
 
-- You may need MSYS2 (`ridk install`) if using Windows.
-- `choco install ruby` MIGHT give you the WRONG ruby version.
-	- If this happens, uninstall ruby, and run `choco install ruby --version=2.6.5.1`.
+The script has no dependencies and treats scraped content as untrusted
+(tags stripped, http(s) URLs only, output escaped by the templates). If the
+source markup changes and a required section can't be parsed, it fails
+without touching the existing data.
 
+Run it locally with Node 18+:
 
-## Testing locally
+```sh
+node scripts/sync-africantech.mjs
+```
 
-Run `bundle install` in this directory to install Jekyll and other deps.
+## Local preview
 
-To run the server locally, run `bundle exec jekyll serve --watch` in this directory. See `scripts/` for more scripts.
+With Ruby 3.x and Bundler:
 
-## Jekyll Stuff
+```sh
+bundle install
+bundle exec jekyll serve --livereload
+```
 
-### Similar Jekyll sites
+Or with Docker, no Ruby needed:
 
-For inspiration or Jekyll/Liquid/Front Matter tips.
+```sh
+docker run --rm -it -p 4000:4000 -v "$PWD":/srv -w /srv ruby:3.3 \
+  sh -c "bundle install && bundle exec jekyll serve --host 0.0.0.0"
+```
 
-<https://github.com/jokecamp/jokecamp.com>
+The `Gemfile` uses Jekyll 4 for local preview. GitHub Pages builds with its own
+Jekyll 3.10 toolchain, so stick to features and plugins both support
+(the four in `_config.yml` are on the Pages allow-list).
 
-### Jekyll tips
+## Security
 
-<https://stackoverflow.com/questions/25452429/excluding-page-from-jekyll-navigation-bar>
-<https://stackoverflow.com/questions/38891463/jekyll-default-installation-doesnt-have-layouts-directory>
-<https://github.com/jekyll/minima>
-<https://jekyllrb.com/tutorials/navigation/#scenario-9-nested-tree-navigation-with-recursion>
+- Content Security Policy (meta tag): same-origin scripts, styles, images and fonts only.
+- No CDN scripts, no analytics, no inline scripts.
+- GitHub Actions are pinned to commit SHAs and run with least-privilege tokens.
+- Dependabot keeps the Bundler and Actions dependencies current; CodeQL scans the JS and workflows.

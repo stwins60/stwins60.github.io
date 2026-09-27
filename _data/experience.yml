@@ -1,0 +1,32 @@
+# Curated overrides for roles synced from africantech.dev (_data/africantech.json).
+# A synced role whose company contains `match` uses these fields instead of
+# its paragraph description. Entries with `extra: true` are not on
+# africantech.dev and are appended after the synced roles.
+
+- match: University of Phoenix
+  role: Software Engineer III
+  company: University of Phoenix
+  highlights:
+    - Designed and implemented infrastructure as code with Terraform and built CI/CD pipelines on AWS CodePipeline.
+    - Deployed scalable containerised applications with Docker across S3, ECS, Lambda, API Gateway, ECR and DMS.
+    - Orchestrated data workflows with AWS Glue and built Python data pipelines, using Great Expectations with Airflow to enforce data quality.
+    - Led database and file migrations to S3 for cost optimisation, with Athena and Lake Formation for data governance, plus a UI for managing data archives.
+    - Set up AWS Transfer Family with SSO for secure partner access.
+    - Built AI-powered tooling for Alation using Flask, refine.dev, Ollama, Azure AI and Amazon Bedrock.
+
+- match: Medline
+  role: IS System Analyst
+  company: Medline Industries, LP
+  highlights:
+    - Owned Punch-out mapping and organisation setup for B2B and B2C commerce systems.
+    - Resolved customer order issues, including stuck transmissions, and maintained user and banner configurations.
+    - Ran load tests to validate performance and used the ELK Stack for centralised logging and monitoring.
+    - Deployed and managed applications on Kubernetes for improved scalability and reliability.
+    - Worked with product owners and delivered Jira sprint commitments.
+
+- extra: true
+  role: Computer Information Systems Tutor
+  company: Harry S Truman College
+  period: 2016 — 2017
+  highlights:
+    - Tutored students in Java, HTML, and Microsoft Office, and explained programming fundamentals and data structures.

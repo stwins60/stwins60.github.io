@@ -1,58 +1,54 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-#
-# If you need help with YAML syntax, here are some quick references for you: 
-# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
-# https://learnxinyminutes.com/docs/yaml/
-#
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
+# Site settings. Content lives in _data/*.yml; layout in _layouts/.
+# Restart `jekyll serve` after editing this file.
 
 title: Idris Fagbemi
+tagline: Software Engineer III · DevOps & Cloud
+description: >-
+  Idris Fagbemi is a Chicago-based DevOps and cloud engineer building secure,
+  automated, cloud-native infrastructure on AWS, Terraform and Kubernetes,
+  with a growing focus on AI-driven tooling.
+url: "https://stwins60.github.io"
+baseurl: ""
+lang: en_US
 email: idrisniyi94@gmail.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Personal site of Idris Fagbemi
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://stwins60.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-#twitter_username: jekyllrb
-github_username:  stwins60
+location: Chicago, IL, USA
+author:
+  name: Idris Fagbemi
+  url: "https://stwins60.github.io"
+social:
+  name: Idris Fagbemi
+  links:
+    - https://github.com/stwins60
+    - https://www.linkedin.com/in/idris-fagbemi-417a559b/
+    - https://x.com/idrisniyi94
+    - https://medium.com/@idrisniyi94
+twitter:
+  username: idrisniyi94
+  card: summary
+logo: /static/images/pictures-of-me/pp.jpg
 
-# Build settings
-theme: minima
+links:
+  github: https://github.com/stwins60
+  linkedin: https://www.linkedin.com/in/idris-fagbemi-417a559b/
+  x: https://x.com/idrisniyi94
+  medium: https://medium.com/@idrisniyi94
+  website: https://africantech.dev
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+# All four are on the GitHub Pages plugin allow-list.
 plugins:
-  - jekyll-liquify
   - jekyll-feed
-  - jekyll-katex
-
-# Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-redirect-from
 
 exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - scripts/
+  - vendor/
   - static/*.md

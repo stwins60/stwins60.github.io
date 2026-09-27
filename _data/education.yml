@@ -1,0 +1,13 @@
+# Curated overrides for degrees synced from africantech.dev, matched on school.
+# Entries with `extra: true` are appended after the synced ones.
+
+- match: Purdue
+  degree: Master's in Information Technology
+
+- match: Illinois Institute of Technology
+  degree: B.S., Information Technology & Management
+
+- extra: true
+  degree: Computer Information Systems
+  school: Harry S Truman College
+  period: "2017"

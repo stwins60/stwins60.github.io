@@ -1,0 +1,87 @@
+# Featured projects show on the home page; the rest appear on /projects/.
+- title: TunnelFlow
+  featured: true
+  summary: >-
+    A self-hosted platform for managing Cloudflare Tunnels from a single
+    place, instead of juggling tunnel configs by hand.
+  stack: [Cloudflare Tunnel, Self-hosted]
+  link: https://medium.com/@idrisniyi94/tunnelflow-the-self-hosted-cloudflare-tunnel-management-platform-youve-been-waiting-for-db7ba4ab23d6
+  link_label: Read the write-up
+
+- title: AI-Powered Alert Triage on K3s
+  featured: true
+  summary: >-
+    A production-grade K3s cluster with AI-assisted triage of its alerts,
+    so on-call time goes to fixing problems rather than sorting noise.
+  stack: [K3s, Kubernetes, AI]
+  link: https://medium.com/@idrisniyi94/building-a-production-grade-k3s-cluster-with-ai-powered-alert-triage-e66b7c59a871
+  link_label: Read the write-up
+
+- title: Untrusted AI DevOps Engineer
+  featured: true
+  summary: >-
+    An AI DevOps agent designed from day one not to be trusted, as an
+    exploration of the guardrails needed before AI touches production.
+  stack: [AI agents, Guardrails, DevOps]
+  link: https://medium.com/@idrisniyi94/i-built-an-ai-devops-engineer-that-cannot-be-trusted-on-purpose-7225df869742
+  link_label: Read the write-up
+
+- title: AI Build-Log Analysis for Jenkins
+  featured: true
+  summary: >-
+    Uses GPT-4 and LangChain to read failed Jenkins build logs and explain
+    what broke and how to fix it.
+  stack: [Jenkins, LangChain, GPT-4]
+  link: https://africantech.dev/blog-list/supercharge-jenkins-with-ai-build-log-analysis-usi/
+  link_label: Read the write-up
+
+- title: Video-to-Transcript Web App
+  summary: >-
+    Converts uploaded videos into text transcripts, letting users save and
+    download the transcript, the video and the extracted audio.
+  stack: [Python, Web]
+  image: /static/images/website.jpg
+
+- title: Library Management System
+  summary: >-
+    Helps libraries lend books efficiently: librarians register users, check
+    books in and out, and track new and issued titles.
+  stack: [Web, SQL]
+  image: /static/images/LMS.jpg
+
+- title: E-Commerce Beauty Store
+  summary: >-
+    A production storefront built for a small business selling hair
+    products in a range of styles.
+  stack: [E-commerce, Web]
+  image: /static/images/B2C.jpg
+
+- title: SQL Query Analyzer
+  summary: A tool for practising and analysing SQL queries.
+  stack: [SQL]
+  image: /static/images/sql_query_analyzer.jpg
+  link: https://github.com/stwins60/SQL-Query-Analyzer
+  link_label: View on GitHub
+
+- title: "Auxy: Connecting At-Risk Students to Campus Resources"
+  summary: >-
+    An Inter-Professional Project (IPRO) at Illinois Tech for a
+    subscription product that connects students at risk of failing with
+    on-campus support.
+  stack: [Product, Research]
+  link: /static/files/Pitch_Deck.pdf
+  link_label: Pitch deck (PDF)
+
+- title: IT Security Practice for Developing Nations
+  summary: >-
+    A literature review of IT security techniques, trends and ethics, and
+    what they mean for practitioners in developing nations.
+  stack: [Security, Research]
+  link: /static/files/ResearchDocument.pdf
+  link_label: Paper (PDF)
+
+- title: Data Security
+  summary: An overview of common data threats and how to defend against them.
+  stack: [Security, Writing]
+  link: https://www.linkedin.com/pulse/data-security-idris-fagbemi/
+  link_label: Read on LinkedIn

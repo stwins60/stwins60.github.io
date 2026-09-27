@@ -1,18 +1,21 @@
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {%- seo -%}
-    <link rel="stylesheet" href="{{ "/static/css/style.css" | relative_url }}">
-    {%- feed_meta -%}
-    {%- if jekyll.environment == 'production' and site.google_analytics -%}
-    {%- include google-analytics.html -%}
-    {%- endif -%}
-
-    {%- include custom-head.html -%}
-
-</head>
-
-<script>
-      // alert('lol head.html works')
-</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{%- comment -%}
+  GitHub Pages can't set response headers, so the CSP ships as a meta tag.
+  Everything is first-party: no inline scripts, no third-party origins.
+{%- endcomment %}
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f7f7f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0f14" media="(prefers-color-scheme: dark)">
+{% seo %}
+{% feed_meta %}
+<link rel="icon" href="{{ '/static/images/favicon/favicon.ico' | relative_url }}" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/static/images/favicon/favicon-32x32.png' | relative_url }}">
+<link rel="apple-touch-icon" href="{{ '/static/images/favicon/apple-touch-icon.png' | relative_url }}">
+<link rel="manifest" href="{{ '/static/images/favicon/site.webmanifest' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+{%- comment -%} Loaded blocking on purpose: sets the theme before first paint. {%- endcomment %}
+<script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>

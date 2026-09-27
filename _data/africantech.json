@@ -1,0 +1,77 @@
+{
+  "source": "https://africantech.dev",
+  "about": "I'm a DevOps engineer who loves automating workflows and exploring AI to improve infrastructure. I enjoy teaching Python and DevOps, and in my free time, I code, game, and keep learning.",
+  "bio": "I'm a DevOps engineer passionate about building efficient and secure cloud-native systems. I focus on automation, I craft scalable workflows that empower teams and deliver value.",
+  "services": [
+    {
+      "title": "DevOps Automation",
+      "text": "Building CI/CD pipelines, scalable workflows, IaC, monitoring & alerting solutions."
+    },
+    {
+      "title": "AI-Driven Tools",
+      "text": "Implementing AI & ML solutions to enhance efficiency and smart infrastructure."
+    },
+    {
+      "title": "Training & Mentorship",
+      "text": "Teaching Python, DevOps best-practices, and cloud fundamentals to beginners."
+    }
+  ],
+  "experience": [
+    {
+      "org": "University of Phoenix",
+      "period": "2022 — Present",
+      "title": "Engineer III",
+      "description": "I designed and implemented infrastructure as code using Terraform and built CI/CD pipelines with AWS CodePipeline. I deployed scalable applications with Docker and orchestrated data workflows using AWS Glue, managing services like S3, ECS, Lambda, API Gateway, ECR, DMS, Athena, and Lake Formation. I developed Python-based data pipelines and implemented Great Expectations with AWS Airflow to ensure data quality. I led migrations of databases and files to S3 for cost optimization, leveraged Athena and Lake Formation for data governance, and created a UI for managing data archives. Additionally, I set up AWS Transfer Family with SSO for secure access and built AI-powered solutions using Flask, refine.dev, Ollama, Azure AI, and Amazon Bedrock for Alation."
+    },
+    {
+      "org": "Medline LP",
+      "period": "2020 — 2022",
+      "title": "IS System Analyst",
+      "description": "I performed Punch-out mapping and organization setup, resolved customer order issues including stuck transmissions, and maintained user and banner configurations. I collaborated with product owners, completed Jira sprint tasks, and supported both B2B and B2C systems. I conducted load testing to ensure performance and utilized the ELK Stack for centralized logging and monitoring. Additionally, I deployed and managed applications using Kubernetes for improved scalability and reliability."
+    }
+  ],
+  "education": [
+    {
+      "org": "Purdue University Global",
+      "period": "2021 — 2023",
+      "title": "Masters in Information Technology",
+      "description": ""
+    },
+    {
+      "org": "Illinois Institute of Technology",
+      "period": "2017 — 2019",
+      "title": "Bachelors of Science",
+      "description": ""
+    }
+  ],
+  "articles": [
+    {
+      "title": "I Built an AI DevOps Engineer That Cannot Be Trusted, On Purpose",
+      "url": "https://medium.com/@idrisniyi94/i-built-an-ai-devops-engineer-that-cannot-be-trusted-on-purpose-7225df869742",
+      "date": "2026-09-06",
+      "summary": "Every DevOps team I know has the same conversation about AI agents. Someone demos an assistant that reads logs and suggests a fix. Someone…",
+      "source": "Medium"
+    },
+    {
+      "title": "Building a Production-Grade K3s Cluster with AI-Powered Alert Triage",
+      "url": "https://medium.com/@idrisniyi94/building-a-production-grade-k3s-cluster-with-ai-powered-alert-triage-e66b7c59a871",
+      "date": "2026-06-22",
+      "summary": "How I combined bare-metal Kubernetes, a full observability stack, and a Groq-powered LLM microservice to build a self-healing on-call…",
+      "source": "Medium"
+    },
+    {
+      "title": "TunnelFlow: The Self-Hosted Cloudflare Tunnel Management Platform You’ve Been Waiting For",
+      "url": "https://medium.com/@idrisniyi94/tunnelflow-the-self-hosted-cloudflare-tunnel-management-platform-youve-been-waiting-for-db7ba4ab23d6",
+      "date": "2026-06-10",
+      "summary": "",
+      "source": "Medium"
+    },
+    {
+      "title": "Supercharge Jenkins with AI: Build Log Analysis Using GPT-4 & LangChain",
+      "url": "https://africantech.dev/blog-list/supercharge-jenkins-with-ai-build-log-analysis-usi/",
+      "date": "2025-06-27",
+      "summary": "",
+      "source": "africantech.dev"
+    }
+  ]
+}

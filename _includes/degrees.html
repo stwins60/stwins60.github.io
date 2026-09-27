@@ -1,0 +1,31 @@
+{%- comment -%}
+  Degrees synced from africantech.dev, with curated overrides from _data/education.yml.
+  include.style: "cards" (home) or "resume".
+{%- endcomment -%}
+{%- assign extras = site.data.education | where: "extra", true -%}
+{%- assign all = site.data.africantech.education | concat: extras -%}
+{%- for e in all -%}
+  {%- assign o = nil -%}
+  {%- if e.extra -%}
+    {%- assign o = e -%}
+  {%- else -%}
+    {%- for c in site.data.education -%}
+      {%- if c.match and e.org contains c.match -%}{%- assign o = c -%}{%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+  {%- assign degree = o.degree | default: e.title -%}
+  {%- assign school = o.school | default: e.org -%}
+  {%- assign period = o.period | default: e.period -%}
+  {%- if include.style == "resume" %}
+<div class="resume-item resume-row">
+  <h3>{{ degree | escape }} <span class="at">· {{ school | escape }}</span></h3>
+  <span class="resume-period">{{ period | escape }}</span>
+</div>
+  {%- else %}
+<div class="card edu">
+  <p class="edu-period">{{ period | escape }}</p>
+  <h3>{{ degree | escape }}</h3>
+  <p>{{ school | escape }}</p>
+</div>
+  {%- endif -%}
+{%- endfor -%}

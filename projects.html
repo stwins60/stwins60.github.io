@@ -1,0 +1,27 @@
+---
+layout: page
+title: Projects
+permalink: /projects/
+eyebrow: Portfolio
+lead: >-
+  Infrastructure, AI tooling, web applications and research, from recent
+  platform work to earlier projects from school and freelance builds.
+---
+{%- assign featured = site.data.projects | where: "featured", true -%}
+{%- assign earlier = site.data.projects | where_exp: "p", "p.featured != true" -%}
+
+<h2 class="subhead">DevOps &amp; AI</h2>
+<div class="grid grid-2">
+  {%- for p in featured %}
+  {% include project-card.html project=p %}
+  {%- endfor %}
+</div>
+
+<h2 class="subhead">Earlier work &amp; research</h2>
+<div class="grid grid-3">
+  {%- for p in earlier %}
+  {% include project-card.html project=p images=true %}
+  {%- endfor %}
+</div>
+
+<p class="more">More code lives on <a href="{{ site.links.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
