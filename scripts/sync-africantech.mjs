@@ -66,46 +66,75 @@ function safeUrl(raw) {
 
 const withoutComments = (html) => html.replace(/<!--[\s\S]*?-->/g, '');
 
-function blocks(html, className) {
-  // Chunks of markup starting at each element carrying `className`.
-  const re = new RegExp(`<[a-z0-9]+[^>]*class="[^"]*\\b${className}\\b[^"]*"`, 'gi');
+// A class="..." attribute containing every space-separated token in `classes`
+// as a whole token, so "service" doesn't also match "service-icon".
+function classAttr(classes) {
+  const look = classes.split(/\s+/).map((c) => String.raw`(?=[^"]*(?<=[\s"])${c}(?=[\s"]))`).join('');
+  return String.raw`class="${look}[^"]*"`;
+}
+
+function blocks(html, classes) {
+  // Chunks of markup starting at each element carrying all of `classes`.
+  const re = new RegExp(String.raw`<[a-z0-9]+[^>]*${classAttr(classes)}`, 'gi');
   const starts = [...html.matchAll(re)].map((m) => m.index);
   return starts.map((s, i) => html.slice(s, starts[i + 1] ?? s + 8000));
 }
 
-function field(chunk, className) {
-  const m = chunk.match(new RegExp(`class="[^"]*\\b${className}\\b[^"]*"[^>]*>([\\s\\S]*?)</(div|p|span|h\\d)>`, 'i'));
-  return m ? text(m[1]) : '';
+// Inner HTML of the first <tag> in chunk.
+function first(chunk, tag) {
+  const m = chunk.match(new RegExp(String.raw`<${tag}\b[^>]*>([\s\S]*?)</${tag}>`, 'i'));
+  return m ? m[1] : '';
+}
+
+// Inner HTML of the first element carrying `classes` (not safe for nested same-tag elements).
+function byClass(chunk, classes) {
+  const m = chunk.match(new RegExp(String.raw`<([a-z0-9]+)[^>]*${classAttr(classes)}[^>]*>([\s\S]*?)</\1>`, 'i'));
+  return m ? m[2] : '';
+}
+
+function section(html, id) {
+  const i = html.search(new RegExp(String.raw`<section[^>]*\bid="${id}"`, 'i'));
+  if (i < 0) return '';
+  const j = html.indexOf('</section>', i);
+  return html.slice(i, j < 0 ? undefined : j);
 }
 
 function parseHome(html) {
   html = withoutComments(html);
 
-  const about = text(html.match(/About Me\s*<\/h\d>\s*<p[^>]*>([\s\S]*?)<\/p>/i)?.[1] ?? '', 600);
-  const bio = text(html.match(/Biography\s*<\/h\d>\s*<p[^>]*>([\s\S]*?)<\/p>/i)?.[1] ?? '', 600);
+  // Hero intro paragraph, and the lead paragraph of the "What I do" section.
+  const about = text(byClass(html, 'hero-lede'), 600);
+  const aboutSection = section(html, 'about');
+  const head = aboutSection.match(/<div[^>]*class="[^"]*\bsection-head\b[^"]*"[^>]*>([\s\S]*?)<div class="services/i)?.[1] ?? '';
+  const bio = text(first(head, 'p'), 600);
 
-  const services = blocks(html, 'service-box-s1')
-    .map((c) => ({ title: field(c, 'title'), text: field(c, 'description') }))
+  const services = blocks(aboutSection, 'card service')
+    .map((c) => ({ title: text(first(c, 'h3'), 200), text: text(first(c, 'p')) }))
     .filter((s) => s.title && s.text);
 
   const experience = [];
   const education = [];
-  for (const c of blocks(html, 'experience-card-s2')) {
+  for (const c of blocks(section(html, 'experience'), 'timeline-item')) {
+    // <div class="timeline-meta"><span class="mono">2022 — Present</span> · Org</div>
+    const meta = byClass(c, 'timeline-meta');
+    const period = text(byClass(meta, 'mono'), 100);
+    const org = text(meta.replace(/<span[^>]*class="[^"]*\bmono\b[^"]*"[^>]*>[\s\S]*?<\/span>/i, ''), 200)
+      .replace(/^[\s·•|,–—-]+/, '');
     const item = {
-      org: field(c, 'experience-card-s2__org'),
-      period: field(c, 'experience-card-s2__duration').replace(/\s*[-–—]\s*/g, ' — '),
-      title: field(c, 'experience-card-s2__title'),
-      description: field(c, 'experience-card-s2__desc'),
+      org,
+      period: period.replace(/\s*[-–—]\s*/g, ' — '),
+      title: text(first(c, 'h3'), 200),
+      description: text(first(c, 'p')),
     };
     if (!item.org || !item.title) continue;
     const isDegree = !item.description ||
-      /\b(masters?|bachelors?|associates?|degree|diploma|b\.?sc?|m\.?sc?|ph\.?d)\b/i.test(item.title);
+      /\b(master'?s?|bachelor'?s?|associate'?s?|degree|diploma|b\.?sc?|m\.?sc?|ph\.?d)\b/i.test(item.title);
     (isDegree ? education : experience).push(item);
   }
 
   const cards = [];
-  for (const c of blocks(html, 'blog-card__title')) {
-    const m = c.match(/<a[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/i);
+  for (const c of blocks(section(html, 'blog'), 'blog-card')) {
+    const m = first(c, 'h3').match(/<a[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/i);
     const url = m && safeUrl(m[1]);
     if (url) cards.push({ title: cleanTitle(text(m[2], 200)), url });
   }
