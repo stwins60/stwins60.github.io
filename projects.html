@@ -7,15 +7,23 @@ lead: >-
   Infrastructure, AI tooling, web applications and research, from recent
   platform work to earlier projects from school and freelance builds.
 ---
-{%- assign featured = site.data.projects | where: "featured", true -%}
-{%- assign earlier = site.data.projects | where_exp: "p", "p.featured != true" -%}
+{%- comment -%}
+  Current projects are synced from africantech.dev (_data/africantech.json);
+  _data/projects.yml holds older work that only appears here.
+{%- endcomment -%}
+{%- assign synced = site.data.africantech.projects -%}
+{%- assign categories = synced | map: "category" | uniq -%}
+{%- assign earlier = site.data.projects -%}
 
-<h2 class="subhead">DevOps &amp; AI</h2>
+{%- for cat in categories %}
+<h2 class="subhead">{{ cat | escape }}</h2>
 <div class="grid grid-2">
-  {%- for p in featured %}
+  {%- assign items = synced | where: "category", cat -%}
+  {%- for p in items %}
   {% include project-card.html project=p %}
   {%- endfor %}
 </div>
+{%- endfor %}
 
 <h2 class="subhead">Earlier work &amp; research</h2>
 <div class="grid grid-3">
@@ -24,4 +32,4 @@ lead: >-
   {%- endfor %}
 </div>
 
-<p class="more">More code lives on <a href="{{ site.links.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+<p class="more">Full write-ups live on <a href="{{ site.links.website }}/projects/" target="_blank" rel="noopener noreferrer">africantech.dev</a>. More code lives on <a href="{{ site.links.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>

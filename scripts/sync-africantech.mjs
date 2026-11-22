@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-// Pulls profile content from https://africantech.dev into _data/africantech.json.
+// Pulls profile content (about, services, experience, education, projects,
+// articles) from https://africantech.dev into _data/africantech.json.
 //
 // No dependencies (Node 18+). Run locally with `node scripts/sync-africantech.mjs`;
 // the "Sync from africantech.dev" workflow runs it on a schedule.
@@ -139,7 +140,24 @@ function parseHome(html) {
     if (url) cards.push({ title: cleanTitle(text(m[2], 200)), url });
   }
 
-  return { about, bio, services, experience, education, cards };
+  const projects = [];
+  for (const c of blocks(section(html, 'projects'), 'project-card')) {
+    const open = c.slice(0, c.indexOf('>') + 1);
+    const href = c.match(/<a[^>]*href="([^"]+)"[^>]*class="[^"]*\bstretched\b/i)?.[1]
+      ?? c.match(/<a[^>]*class="[^"]*\bstretched\b[^"]*"[^>]*href="([^"]+)"/i)?.[1];
+    const item = {
+      title: text(first(c, 'h3'), 200),
+      category: text(byClass(c, 'project-cat'), 100),
+      featured: /\bdata-featured="1"/.test(open),
+      summary: text(first(c, 'p'), 400),
+      stack: [...byClass(c, 'project-tech').matchAll(/<span[^>]*>([\s\S]*?)<\/span>/gi)]
+        .map((m) => text(m[1], 60)).filter(Boolean).slice(0, 8),
+      url: safeUrl(href),
+    };
+    if (item.title && item.summary) projects.push(item);
+  }
+
+  return { about, bio, services, experience, education, cards, projects };
 }
 
 function parseBlogList(html) {
@@ -199,6 +217,7 @@ async function main() {
   if (h.services.length === 0) problems.push('services');
   if (h.experience.length === 0) problems.push('experience');
   if (articles.length === 0) problems.push('articles');
+  if (h.projects.length === 0) problems.push('projects');
   if (problems.length) {
     console.error(`Refusing to write: could not parse ${problems.join(', ')} from ${ORIGIN}. Has its markup changed?`);
     process.exit(1);
@@ -211,6 +230,7 @@ async function main() {
     services: h.services,
     experience: h.experience,
     education: h.education,
+    projects: h.projects,
     articles,
   };
   const json = JSON.stringify(out, null, 2) + '\n';
@@ -221,7 +241,7 @@ async function main() {
     return;
   }
   await writeFile(OUT, json);
-  console.log(`Updated ${path.relative(process.cwd(), OUT)}: ${h.services.length} services, ${h.experience.length} roles, ${h.education.length} degrees, ${articles.length} articles.`);
+  console.log(`Updated ${path.relative(process.cwd(), OUT)}: ${h.services.length} services, ${h.experience.length} roles, ${h.education.length} degrees, ${h.projects.length} projects, ${articles.length} articles.`);
 }
 
 main().catch((err) => {

@@ -44,6 +44,319 @@
       "description": ""
     }
   ],
+  "projects": [
+    {
+      "title": "Audiobook Studio",
+      "category": "AI & Automation",
+      "featured": true,
+      "summary": "Turns notes into chapters of narrated audio with shareable links.",
+      "stack": [
+        "AI",
+        "Text-to-Speech"
+      ],
+      "url": "https://africantech.dev/projects/audiobook-studio/"
+    },
+    {
+      "title": "Day Brief Assistant",
+      "category": "AI & Automation",
+      "featured": false,
+      "summary": "Builds a spoken morning briefing from weather, calendar events, unread email, and headlines.",
+      "stack": [
+        "AI",
+        "Text-to-Speech",
+        "Calendar",
+        "Email"
+      ],
+      "url": "https://africantech.dev/projects/day-brief-assistant/"
+    },
+    {
+      "title": "Simple AI Agent",
+      "category": "AI & Automation",
+      "featured": false,
+      "summary": "A hands-on starter project for building Sage, a web-based AI study assistant with tools and memory.",
+      "stack": [
+        "AI Agents",
+        "Tool Calling",
+        "Memory"
+      ],
+      "url": "https://africantech.dev/projects/simple-ai-agent/"
+    },
+    {
+      "title": "Slack–Telegram Bridge",
+      "category": "AI & Automation",
+      "featured": false,
+      "summary": "Forwards messages and thread replies from a Slack channel to a Telegram chat using Slack Socket Mode.",
+      "stack": [
+        "Slack",
+        "Socket Mode",
+        "Telegram"
+      ],
+      "url": "https://africantech.dev/projects/slack-telegram-bridge/"
+    },
+    {
+      "title": "DevOps Agent Fleet",
+      "category": "DevOps & Platform",
+      "featured": true,
+      "summary": "An operations platform where specialized agents investigate incidents, propose fixes, and track approved remediation with audit and rollback support.",
+      "stack": [
+        "AI Agents",
+        "Incident Response",
+        "Audit",
+        "Rollback"
+      ],
+      "url": "https://africantech.dev/projects/devops-agent-fleet/"
+    },
+    {
+      "title": "DevOps Agent Harness",
+      "category": "DevOps & Platform",
+      "featured": true,
+      "summary": "A model-agnostic runtime that enforces DevOps policies, approvals, audit logging, secret redaction, and rollback outside the model.",
+      "stack": [
+        "AI Agents",
+        "Policy Enforcement",
+        "Audit Logging"
+      ],
+      "url": "https://africantech.dev/projects/devops-agent-harness/"
+    },
+    {
+      "title": "Kubernetes Platform Agent",
+      "category": "DevOps & Platform",
+      "featured": true,
+      "summary": "A read-only agent that triages Prometheus alerts and reports on Talos Kubernetes cluster health, namespace onboarding, and migration readiness.",
+      "stack": [
+        "Kubernetes",
+        "Talos",
+        "Prometheus",
+        "AI Agents"
+      ],
+      "url": "https://africantech.dev/projects/k8s-platform-agent/"
+    },
+    {
+      "title": "Server Manager",
+      "category": "DevOps & Platform",
+      "featured": true,
+      "summary": "A self-hosted Flask dashboard for monitoring servers, opening SSH terminals, and querying fleet health through an AI assistant and MCP.",
+      "stack": [
+        "Flask",
+        "SSH",
+        "MCP",
+        "AI Assistant"
+      ],
+      "url": "https://africantech.dev/projects/server-manager/"
+    },
+    {
+      "title": "Articles Cleaning Services",
+      "category": "Apps & Products",
+      "featured": false,
+      "summary": "A cleaning-services website with quote requests, online signatures, and an admin dashboard for managing service agreements.",
+      "stack": [
+        "Web App",
+        "E-Signatures",
+        "Admin Dashboard"
+      ],
+      "url": "https://africantech.dev/projects/articles-cleaning-services/"
+    },
+    {
+      "title": "Carenue",
+      "category": "Apps & Products",
+      "featured": true,
+      "summary": "An AI revenue and operations platform for home-care businesses, with separate frontend and backend services.",
+      "stack": [
+        "AI",
+        "Frontend",
+        "Backend"
+      ],
+      "url": "https://africantech.dev/projects/carenue/"
+    },
+    {
+      "title": "Flask Three-Tier Ecommerce",
+      "category": "Apps & Products",
+      "featured": false,
+      "summary": "A sample storefront with a catalog, cart, and checkout that demonstrates presentation, business logic, and data layers.",
+      "stack": [
+        "Flask",
+        "Three-Tier Architecture"
+      ],
+      "url": "https://africantech.dev/projects/flask-3tier-app/"
+    },
+    {
+      "title": "InforMact",
+      "category": "Apps & Products",
+      "featured": false,
+      "summary": "A supply-chain planning application for small businesses that forecasts stockouts, flags vendor risks, and recommends orders for human review.",
+      "stack": [
+        "Forecasting",
+        "Supply Chain",
+        "Human-in-the-loop"
+      ],
+      "url": "https://africantech.dev/projects/informact/"
+    },
+    {
+      "title": "NIA Election",
+      "category": "Apps & Products",
+      "featured": false,
+      "summary": "An election portal for the Nigeria Islamic Association with voter registration, check-in, secret ballots, turnout reporting, and committee tools.",
+      "stack": [
+        "Web App",
+        "Voting",
+        "Reporting"
+      ],
+      "url": "https://africantech.dev/projects/nia-election/"
+    },
+    {
+      "title": "RapheeHair",
+      "category": "Apps & Products",
+      "featured": false,
+      "summary": "An ecommerce store for braiding hair extensions with product variants, shopping carts, and Stripe checkout.",
+      "stack": [
+        "Ecommerce",
+        "Stripe"
+      ],
+      "url": "https://africantech.dev/projects/rapheehair/"
+    },
+    {
+      "title": "TaxRemit",
+      "category": "Apps & Products",
+      "featured": false,
+      "summary": "A payments and tax-remittance MVP modeled on Nigerian VAT and company income tax, with mock payment and filing integrations.",
+      "stack": [
+        "Payments",
+        "Fintech",
+        "Tax"
+      ],
+      "url": "https://africantech.dev/projects/taxremit/"
+    },
+    {
+      "title": "Personal Website",
+      "category": "Apps & Products",
+      "featured": false,
+      "summary": "A Jekyll portfolio and résumé site published through GitHub Pages.",
+      "stack": [
+        "Jekyll",
+        "GitHub Pages"
+      ],
+      "url": "https://africantech.dev/projects/personal-website/"
+    },
+    {
+      "title": "Enigma V1",
+      "category": "Fintech",
+      "featured": true,
+      "summary": "A personal financial intelligence system with specialist agents, deterministic risk controls, decision history, and paper trading.",
+      "stack": [
+        "AI Agents",
+        "Risk Controls",
+        "Paper Trading"
+      ],
+      "url": "https://africantech.dev/projects/enigma-v1/"
+    },
+    {
+      "title": "OANDA AI Trading Agent",
+      "category": "Fintech",
+      "featured": false,
+      "summary": "An AI-assisted trading desk for OANDA v20 with broker integration, market data, news sentiment, and a web dashboard.",
+      "stack": [
+        "OANDA v20",
+        "AI",
+        "Sentiment Analysis",
+        "Dashboard"
+      ],
+      "url": "https://africantech.dev/projects/oanda-ai-trading-agent/"
+    },
+    {
+      "title": "53-Week AI and Agentic AI Engineering",
+      "category": "Teaching",
+      "featured": true,
+      "summary": "A curriculum for engineers with Python experience covering LLM applications, retrieval, tool calling, MCP, and multi-agent systems.",
+      "stack": [
+        "Python",
+        "LLMs",
+        "RAG",
+        "Tool Calling"
+      ],
+      "url": "https://africantech.dev/projects/ai-agentic-engineering-53w/"
+    },
+    {
+      "title": "AI and Agentic AI Engineering Course",
+      "category": "Teaching",
+      "featured": false,
+      "summary": "A 20-week beginner cohort and a 20-module reference curriculum on building, evaluating, securing, and operating AI systems.",
+      "stack": [
+        "LLMs",
+        "Evaluation",
+        "AI Security"
+      ],
+      "url": "https://africantech.dev/projects/ai-agentic-engineering-course/"
+    },
+    {
+      "title": "CodeHero AI",
+      "category": "Teaching",
+      "featured": false,
+      "summary": "A 36-week course on LLMs and agents for children ages 7–12 who already know Python.",
+      "stack": [
+        "Python",
+        "LLMs",
+        "AI Agents"
+      ],
+      "url": "https://africantech.dev/projects/codehero-ai/"
+    },
+    {
+      "title": "Coding Lounge",
+      "category": "Teaching",
+      "featured": false,
+      "summary": "Nine hands-on stations where young coders practice agent instructions, skills, tool calling, and MCP.",
+      "stack": [
+        "AI Agents",
+        "Tool Calling",
+        "MCP"
+      ],
+      "url": "https://africantech.dev/projects/coding-lounge/"
+    },
+    {
+      "title": "K–12 Advanced Agentic AI Engineering",
+      "category": "Teaching",
+      "featured": false,
+      "summary": "A grades 7–12 curriculum that teaches students to build and evaluate stateful agents through an aerospace logistics scenario.",
+      "stack": [
+        "AI Agents",
+        "Evaluation"
+      ],
+      "url": "https://africantech.dev/projects/k12-agentic-engineering/"
+    },
+    {
+      "title": "Kubernetes and Cloud-Native Engineering Cohort",
+      "category": "Teaching",
+      "featured": false,
+      "summary": "The main curriculum for container fundamentals and production Kubernetes, including labs and sample applications.",
+      "stack": [
+        "Kubernetes",
+        "Containers",
+        "Cloud-Native"
+      ],
+      "url": "https://africantech.dev/projects/kubernetes-cohorts/"
+    },
+    {
+      "title": "January 2026 Kubernetes Cohort",
+      "category": "Teaching",
+      "featured": false,
+      "summary": "Materials, recordings, assignments, projects, and career resources for the January 2026 Emagetech cohort.",
+      "stack": [
+        "Kubernetes"
+      ],
+      "url": "https://africantech.dev/projects/kubernetes-january-2026-cohort/"
+    },
+    {
+      "title": "Mentorship Projects",
+      "category": "Teaching",
+      "featured": false,
+      "summary": "A DevSecOps lab that follows a fintech migration from a virtual-machine monolith to a Kubernetes platform managed through GitOps.",
+      "stack": [
+        "DevSecOps",
+        "Kubernetes",
+        "GitOps"
+      ],
+      "url": "https://africantech.dev/projects/mentorship-projects/"
+    }
+  ],
   "articles": [
     {
       "title": "I Built an AI DevOps Engineer That Cannot Be Trusted, On Purpose",

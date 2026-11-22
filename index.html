@@ -29,11 +29,9 @@ redirect_from:
   <div class="container hero-grid">
     <div class="hero-copy">
       <p class="eyebrow">DevOps · Cloud · AI</p>
-      <h1>Hi, I'm Idris. I build secure, <span class="accent">automated</span> cloud-native systems.</h1>
+      <h1>Hi, I'm Idris. I build <span class="accent">AI agents</span> and self-healing DevOps platforms.</h1>
       <p class="lead">
-        I'm a {{ current_role | escape }} at {{ current_company | escape }}. I automate the path from commit
-        to production with Terraform, AWS and Kubernetes, and I'm exploring how AI can make
-        infrastructure smarter.
+        {{ at.about | escape }}
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="mailto:{{ site.email }}">{% include icon.html name="mail" %} Get in touch</a>
@@ -46,8 +44,8 @@ redirect_from:
       <img class="portrait" src="{{ '/static/images/pictures-of-me/pp.jpg' | relative_url }}" alt="Portrait of Idris Fagbemi" width="220" height="220" fetchpriority="high">
       <dl class="facts">
         <div><dt>Currently</dt><dd>{{ current_role | escape }} @ {{ current_company | escape }}</dd></div>
-        <div><dt>Focus</dt><dd>Terraform · AWS · Kubernetes · AI tooling</dd></div>
-        <div><dt>Teaching</dt><dd>Python &amp; DevOps fundamentals</dd></div>
+        <div><dt>Focus</dt><dd>Agentic AI · Kubernetes · AWS · Terraform</dd></div>
+        <div><dt>Teaching</dt><dd>Kubernetes, DevSecOps &amp; agentic AI</dd></div>
       </dl>
       {% include social.html %}
     </div>
@@ -114,9 +112,9 @@ redirect_from:
       <a class="text-link" href="{{ '/projects/' | relative_url }}">All projects {% include icon.html name="arrow" %}</a>
     </div>
     <div class="grid grid-2">
-      {%- assign featured = site.data.projects | where: "featured", true -%}
+      {%- assign featured = at.projects | where: "featured", true -%}
       {%- for p in featured %}
-      {% include project-card.html project=p %}
+      {% include project-card.html project=p show_category=true %}
       {%- endfor %}
     </div>
   </div>
@@ -177,7 +175,7 @@ redirect_from:
     <div class="cta">
       <div>
         <h2>Let's build something reliable.</h2>
-        <p>Open to DevOps, cloud and platform engineering conversations, mentoring, and collaborations on AI-driven tooling.</p>
+        <p>Open to platform, DevOps and AI engineering roles, consulting, speaking and teaching.</p>
       </div>
       <div class="cta-actions">
         <a class="btn btn-primary btn-lg" href="mailto:{{ site.email }}">{% include icon.html name="mail" %} {{ site.email }}</a>

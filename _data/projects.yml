@@ -1,40 +1,5 @@
-# Featured projects show on the home page; the rest appear on /projects/.
-- title: TunnelFlow
-  featured: true
-  summary: >-
-    A self-hosted platform for managing Cloudflare Tunnels from a single
-    place, instead of juggling tunnel configs by hand.
-  stack: [Cloudflare Tunnel, Self-hosted]
-  link: https://medium.com/@idrisniyi94/tunnelflow-the-self-hosted-cloudflare-tunnel-management-platform-youve-been-waiting-for-db7ba4ab23d6
-  link_label: Read the write-up
-
-- title: AI-Powered Alert Triage on K3s
-  featured: true
-  summary: >-
-    A production-grade K3s cluster with AI-assisted triage of its alerts,
-    so on-call time goes to fixing problems rather than sorting noise.
-  stack: [K3s, Kubernetes, AI]
-  link: https://medium.com/@idrisniyi94/building-a-production-grade-k3s-cluster-with-ai-powered-alert-triage-e66b7c59a871
-  link_label: Read the write-up
-
-- title: Untrusted AI DevOps Engineer
-  featured: true
-  summary: >-
-    An AI DevOps agent designed from day one not to be trusted, as an
-    exploration of the guardrails needed before AI touches production.
-  stack: [AI agents, Guardrails, DevOps]
-  link: https://medium.com/@idrisniyi94/i-built-an-ai-devops-engineer-that-cannot-be-trusted-on-purpose-7225df869742
-  link_label: Read the write-up
-
-- title: AI Build-Log Analysis for Jenkins
-  featured: true
-  summary: >-
-    Uses GPT-4 and LangChain to read failed Jenkins build logs and explain
-    what broke and how to fix it.
-  stack: [Jenkins, LangChain, GPT-4]
-  link: https://africantech.dev/blog-list/supercharge-jenkins-with-ai-build-log-analysis-usi/
-  link_label: Read the write-up
-
+# Older projects, shown under "Earlier work & research" on /projects/.
+# Current projects are synced from africantech.dev (_data/africantech.json).
 - title: Video-to-Transcript Web App
   summary: >-
     Converts uploaded videos into text transcripts, letting users save and

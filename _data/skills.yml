@@ -2,10 +2,10 @@
   items: [S3, ECS, Lambda, API Gateway, ECR, Glue, Athena, Lake Formation, DMS, CodePipeline, Transfer Family, Azure AI]
 
 - group: Infrastructure & Delivery
-  items: [Terraform, Docker, Kubernetes, K3s, Jenkins, GitHub Actions, Cloudflare Tunnel, Linux]
+  items: [Terraform, Docker, Kubernetes, K3s, Talos Linux, GitOps, CI/CD, DevSecOps, Jenkins, GitHub Actions, Cloudflare Tunnel, Linux]
 
 - group: Data & Observability
-  items: [Python data pipelines, Airflow, Great Expectations, ELK Stack, SQL, Load testing (Locust)]
+  items: [Python data pipelines, Airflow, Great Expectations, Prometheus, ELK Stack, SQL, Load testing (Locust)]
 
 - group: AI & Application
-  items: [Amazon Bedrock, Ollama, LangChain, Python, Flask, refine.dev, JavaScript]
+  items: [LLMs & RAG, MCP, Multi-agent systems, Amazon Bedrock, Ollama, LangChain, Python, Django, Flask, refine.dev, JavaScript, Stripe]

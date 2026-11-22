@@ -245,6 +245,11 @@ section[id] { scroll-margin-top: 80px; }
 
 .project { display: flex; flex-direction: column; padding: 0; overflow: hidden; }
 .project .card-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+.project-cat {
+  font: 600 0.72rem/1 var(--mono);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); margin: 0 0 10px;
+}
 .project-shot { aspect-ratio: 16 / 9; width: 100%; object-fit: cover; object-position: top; border-bottom: 1px solid var(--border); }
 .card-link { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 18px; font-weight: 600; text-decoration: none; }
 

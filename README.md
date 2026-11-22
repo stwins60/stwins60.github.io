@@ -10,11 +10,11 @@ from `master`.
 
 | What | File | Maintained by |
 | --- | --- | --- |
-| About text, services, roles, degrees, articles | `_data/africantech.json` | **Synced** from [africantech.dev](https://africantech.dev) |
+| About text, services, roles, degrees, projects, articles | `_data/africantech.json` | **Synced** from [africantech.dev](https://africantech.dev) |
 | Curated bullets / titles for synced roles | `_data/experience.yml` | You (matched on company via `match:`) |
 | Curated degree names | `_data/education.yml` | You (matched on school via `match:`) |
 | Skills | `_data/skills.yml` | You |
-| Projects (`featured: true` shows on home) | `_data/projects.yml` | You |
+| Older projects ("Earlier work & research" on /projects/) | `_data/projects.yml` | You |
 | Name, email, social links | `_config.yml` | You |
 
 Don't hand-edit `_data/africantech.json`; the next sync overwrites it. Put
