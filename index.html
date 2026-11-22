@@ -41,7 +41,8 @@ redirect_from:
     </div>
 
     <div class="hero-card">
-      <img class="portrait" src="{{ '/static/images/pictures-of-me/pp.jpg' | relative_url }}" alt="Portrait of Idris Fagbemi" width="220" height="220" fetchpriority="high">
+      {%- assign portrait = at.portrait | default: '/static/images/pictures-of-me/pp.jpg' %}
+      <img class="portrait" src="{{ portrait | relative_url }}" alt="Portrait of Idris Fagbemi" width="220" height="220" fetchpriority="high">
       <dl class="facts">
         <div><dt>Currently</dt><dd>{{ current_role | escape }} @ {{ current_company | escape }}</dd></div>
         <div><dt>Focus</dt><dd>Agentic AI · Kubernetes · AWS · Terraform</dd></div>

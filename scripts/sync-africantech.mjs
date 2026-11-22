@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Pulls profile content (about, services, experience, education, projects,
-// articles) from https://africantech.dev into _data/africantech.json.
+// articles) from https://africantech.dev into _data/africantech.json, and the
+// hero portrait into static/images/synced/.
 //
 // No dependencies (Node 18+). Run locally with `node scripts/sync-africantech.mjs`;
 // the "Sync from africantech.dev" workflow runs it on a schedule.
@@ -11,12 +12,15 @@
 // (e.g. the source markup changed) the script exits non-zero and leaves the
 // existing JSON untouched rather than blanking the site.
 
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, readdir, unlink } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const ORIGIN = 'https://africantech.dev';
-const OUT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '_data', 'africantech.json');
+const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
+const OUT = path.join(ROOT, '_data', 'africantech.json');
+const IMG_DIR = 'static/images/synced'; // relative to the site root
+const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 const MAX_ARTICLES = 12;
 
 async function get(pathname) {
@@ -26,6 +30,45 @@ async function get(pathname) {
   });
   if (!res.ok) throw new Error(`GET ${pathname} -> HTTP ${res.status}`);
   return res.text();
+}
+
+// Image types we accept, identified by magic bytes rather than the server's word.
+const IMAGE_TYPES = [
+  { ext: 'png', test: (b) => b.length > 8 && b.readUInt32BE(0) === 0x89504e47 },
+  { ext: 'jpg', test: (b) => b.length > 3 && b[0] === 0xff && b[1] === 0xd8 && b[2] === 0xff },
+  { ext: 'webp', test: (b) => b.length > 12 && b.toString('latin1', 0, 4) === 'RIFF' && b.toString('latin1', 8, 12) === 'WEBP' },
+];
+
+// Downloads an image from africantech.dev and saves it as <IMG_DIR>/<name>.<ext>.
+// Returns its site path, e.g. /static/images/synced/portrait.png.
+async function syncImage(url, name) {
+  const u = new URL(url);
+  if (u.hostname !== new URL(ORIGIN).hostname) throw new Error(`image is not on ${ORIGIN}: ${url}`);
+  const res = await fetch(u, {
+    headers: { 'user-agent': 'stwins60.github.io content sync (+https://github.com/stwins60/stwins60.github.io)' },
+    signal: AbortSignal.timeout(30_000),
+  });
+  if (!res.ok) throw new Error(`GET ${u.pathname} -> HTTP ${res.status}`);
+  if (Number(res.headers.get('content-length') ?? 0) > MAX_IMAGE_BYTES) throw new Error(`image too large: ${url}`);
+  const buf = Buffer.from(await res.arrayBuffer());
+  if (buf.length > MAX_IMAGE_BYTES) throw new Error(`image too large: ${url}`);
+  const type = IMAGE_TYPES.find((t) => t.test(buf));
+  if (!type) throw new Error(`not a PNG, JPEG or WebP image: ${url}`);
+
+  const dir = path.join(ROOT, IMG_DIR);
+  await mkdir(dir, { recursive: true });
+  const file = `${name}.${type.ext}`;
+  // Drop copies saved under another extension so only one stays around.
+  for (const f of await readdir(dir)) {
+    if (f !== file && f.startsWith(`${name}.`)) await unlink(path.join(dir, f));
+  }
+  const dest = path.join(dir, file);
+  const prev = await readFile(dest).catch(() => null);
+  if (!prev || !prev.equals(buf)) {
+    await writeFile(dest, buf);
+    console.log(`Updated ${IMG_DIR}/${file} (${Math.round(buf.length / 1024)} KB).`);
+  }
+  return `/${IMG_DIR}/${file}`;
 }
 
 const ENTITIES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', hellip: '…', mdash: '—', ndash: '–', rsquo: '’', lsquo: '‘', rdquo: '”', ldquo: '“' };
@@ -105,6 +148,9 @@ function parseHome(html) {
 
   // Hero intro paragraph, and the lead paragraph of the "What I do" section.
   const about = text(byClass(html, 'hero-lede'), 600);
+  const portraitSrc = (byClass(html, 'orbit-photo') || html.match(/<img[^>]*alt="Portrait[^"]*"[^>]*>/i)?.[0] || '')
+    .match(/<img[^>]*\bsrc="([^"]+)"/i)?.[1];
+  const portrait = safeUrl(portraitSrc);
   const aboutSection = section(html, 'about');
   const head = aboutSection.match(/<div[^>]*class="[^"]*\bsection-head\b[^"]*"[^>]*>([\s\S]*?)<div class="services/i)?.[1] ?? '';
   const bio = text(first(head, 'p'), 600);
@@ -157,7 +203,7 @@ function parseHome(html) {
     if (item.title && item.summary) projects.push(item);
   }
 
-  return { about, bio, services, experience, education, cards, projects };
+  return { about, bio, portrait, services, experience, education, cards, projects };
 }
 
 function parseBlogList(html) {
@@ -223,10 +269,23 @@ async function main() {
     process.exit(1);
   }
 
+  // The portrait is nice to have; if it can't be fetched keep the last good copy
+  // instead of failing the whole sync.
+  const prev = await readFile(OUT, 'utf8').catch(() => '');
+  let portrait = '';
+  try {
+    if (!h.portrait) throw new Error('no portrait image found on the home page');
+    portrait = await syncImage(h.portrait, 'portrait');
+  } catch (err) {
+    try { portrait = JSON.parse(prev).portrait ?? ''; } catch {}
+    console.warn(`::warning::Portrait not synced (${err.message}); keeping ${portrait || 'none'}.`);
+  }
+
   const out = {
     source: ORIGIN,
     about: h.about,
     bio: h.bio,
+    portrait,
     services: h.services,
     experience: h.experience,
     education: h.education,
@@ -235,7 +294,6 @@ async function main() {
   };
   const json = JSON.stringify(out, null, 2) + '\n';
 
-  const prev = await readFile(OUT, 'utf8').catch(() => '');
   if (prev === json) {
     console.log('africantech.json is already up to date.');
     return;

@@ -1,6 +1,7 @@
 # Pulls the latest profile content (about, services, experience, education,
-# articles) from https://africantech.dev into _data/africantech.json and
-# commits it when something changed. GitHub Pages then rebuilds the site.
+# projects, articles) from https://africantech.dev into _data/africantech.json,
+# and the portrait into static/images/synced/, and commits when something
+# changed. GitHub Pages then rebuilds the site.
 name: Sync from africantech.dev
 
 on:
@@ -34,14 +35,14 @@ jobs:
       - name: Commit changes
         id: commit
         run: |
-          if git diff --quiet -- _data/africantech.json; then
+          git add -A -- _data/africantech.json static/images/synced
+          if git diff --cached --quiet; then
             echo "No changes from africantech.dev."
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add _data/africantech.json
           git commit -m "chore: sync content from africantech.dev"
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"

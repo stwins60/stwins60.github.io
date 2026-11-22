@@ -2,6 +2,7 @@
   "source": "https://africantech.dev",
   "about": "DevOps & AI engineer who automates everything worth automating. I design cloud infrastructure, ship agentic tools with guardrails, and teach the next generation of engineers, from 7-year-olds to working professionals.",
   "bio": "I sit where platform engineering meets AI: automating the boring parts, building agents with real guardrails, and teaching others to do the same.",
+  "portrait": "/static/images/synced/portrait.png",
   "services": [
     {
       "title": "DevOps & Platform",

@@ -11,6 +11,7 @@ from `master`.
 | What | File | Maintained by |
 | --- | --- | --- |
 | About text, services, roles, degrees, projects, articles | `_data/africantech.json` | **Synced** from [africantech.dev](https://africantech.dev) |
+| Portrait (hero photo, social-share image) | `static/images/synced/` | **Synced** from [africantech.dev](https://africantech.dev) |
 | Curated bullets / titles for synced roles | `_data/experience.yml` | You (matched on company via `match:`) |
 | Curated degree names | `_data/education.yml` | You (matched on school via `match:`) |
 | Skills | `_data/skills.yml` | You |

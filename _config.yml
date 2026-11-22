@@ -25,7 +25,13 @@ social:
 twitter:
   username: idrisniyi94
   card: summary
-logo: /static/images/pictures-of-me/pp.jpg
+# Portrait synced from africantech.dev (scripts/sync-africantech.mjs).
+logo: /static/images/synced/portrait.png
+
+defaults:
+  - scope: { path: "" }
+    values:
+      image: /static/images/synced/portrait.png
 
 links:
   github: https://github.com/stwins60
